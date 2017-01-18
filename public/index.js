@@ -166,40 +166,106 @@ var rentalModifications = [{
 }];
 
 
+//Exercice 1
 
-function getTime (pickupDate,returnDate){
+
+function calculateDays (pickupDate,returnDate){
 	var returnDate = new Date (returnDate);
 	var pickupDate = new Date (pickupDate);
 	return (((returnDate - pickupDate))/(1000*60*60*24)+1);
 }
 
-function Price (rental, cars, pricePerDay, pricePerKm){
+function getRentalById(rentals, id)
+{
+  for (var i = 0; i < rentals.length; i++) {
+    if (id == rentals[i].id) {
+        return rentals[i];
+    }
+  }
+}
 
-	for (var car in cars){
-	
-		if (cars[car].id = rental.carId)
-		{
-			pricePerDay = cars[car].pricePerDay;
-			pricePerKm	= cars[car].pricePerKm;
-		}
-	}
+function getCarById(cars, id)
+{
+  for (var i = 0; i<cars.length; i++) {
+    if (id == cars[i].id) {
+        return cars[i];
+    }
+  }
+}
 
-//Time
-var time =  getTime (rental.pickupDate , rental.returnDate);
-time = time * pricePerDay;
+function getActorByIdRental(actors, idRental)
+{
+  for (var i = 0; i < actors.length; i++) {
+    if (idRental == actors[i].rentalId) {
+        return actors[i];
+    }
+  }
+}
 
-//Distance
-var dist = rental.distance * pricePerKm;
+function priceCarsDayById(listCar, id, pickupDate, returnDate)  
+{
+    for (var i = 0 ; i < listCar.length; i++){
+      if(id == listCar[i].id){
+          return listCar[i].pricePerDay;
+      }
+    }
+}
 
-//Rental Price
-rental.price = time + dist;
-
-return rental.price;
-
+function priceCarsKmById(listCar, id)
+{
+    for (var i = 0 ; i < listCar.length; i++){
+      if(id == listCar[i].id){
+          return listCar[i].pricePerKm;
+      }
+    }
 }
 
 
-console.log(Price(rentals[2], cars));
+function getNbKmbyId(listRental, id)
+{
+  for (var i = 0; i < listRental.length; i++) {
+    if(id == listRental[i].id)
+    {
+      return listRental[i].distance
+    }
+  }
+}
+
+function time(listRental, listCar)
+ {
+   var time = [];
+  for (var i = 0; i < listCar.length; i++) {
+
+      time[i] = getCarById(listCar, listCar[i].id).pricePerDay  * calculateDays(listRental[i].pickupDate, listRental[i].returnDate)
+  }
+  return time;
+}
+
+function distance(listRental, listCar)
+{
+  var distance = [];
+ for (var i = 0; i < listRental.length; i++) {
+     distance[i] = getCarById(listCar, listRental[i].carId).pricePerKm * listRental[i].distance
+     listRental[i].distance = distance[i]
+ }
+ return distance;
+}
+
+function realPrice(listRental, listCar)
+{
+	for (var i = 0; i < listRental.length; i++)
+	{
+		listRental[i].price = distance(rentals,cars)[i] + time(rentals,cars)[i]
+	}
+}
+
+
+
+//Exercice 2
+
+
+
+console.log(realPrice(rentals[],cars[]));
 console.log(cars);
 console.log(rentals);
 console.log(actors);
