@@ -287,7 +287,7 @@ function priceDiscount(listRental,listCars)
 
 //Exercice 3
 
-function Commission (listCars, listRental)
+function commission (listCars, listRental)
 {
 	var total 
 	var insuranceMoney
@@ -307,6 +307,20 @@ function Commission (listCars, listRental)
 }
 
 
+//Exercice 4 
+
+function deductible(rentals)
+{
+	var days = calculateDays(rentals[i].pickupDate, rentals[i].returnDate)
+    for (var i = 0; i < rentals.length; i++) {
+    if(rentals[i].options.deductibleReduction == true)
+    {
+      rentals[i].price = rentals[i].price + (4*nbDays)
+    }
+  }
+}
+
+// console.log (realPrice('1-pb-92','p306'));
 console.log(cars);
 console.log(rentals);
 console.log(actors);
