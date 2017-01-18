@@ -263,9 +263,27 @@ function realPrice(listRental, listCar)
 
 //Exercice 2
 
+function priceDiscount(listRental,listCars)
+{
+    for(var i =0; i<listRental.length; i++)
+    {
+        var days = calculateDays(listRental[i].pickupDate,listRental[i].returnDate)
 
+        if(1<days<5)
+        {
+            listRental[i].price == listRental[i].price*0.1
+        }
+        else if(days<11)
+        {
+            listRental[i].price == listRental[i].price*0.3
+        }
+        else
+        {
+            listRental[i].price == listRental[i].price*0.5
+        }
+    }
+}
 
-console.log(realPrice(rentals[],cars[]));
 console.log(cars);
 console.log(rentals);
 console.log(actors);
