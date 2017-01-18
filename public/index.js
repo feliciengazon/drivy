@@ -284,6 +284,29 @@ function priceDiscount(listRental,listCars)
     }
 }
 
+
+//Exercice 3
+
+function Commission (listCars, listRental)
+{
+	var total 
+	var insuranceMoney
+	var roadsideAssistanceMoney
+	var drivyMoney
+	
+	for(var i=0; i < rentals.length; i++)
+	{
+		total = listRental[i].price*0.3
+		
+		listRental[i].insuranceMoney = total/2
+		
+		listRental[i].roadsideAssistanceMoney = calculateDays(listRental[i].pickupDate,listRental[i].returnDate)
+
+	    listRental[i].drivyMoney = total - listRental[i].insuranceMoney - listRental[i].roadsideAssistanceMoney
+	}
+}
+
+
 console.log(cars);
 console.log(rentals);
 console.log(actors);
