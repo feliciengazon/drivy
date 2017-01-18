@@ -320,7 +320,10 @@ function deductible(rentals)
   }
 }
 
-// console.log (realPrice('1-pb-92','p306'));
+//Exercice 5 
+
+
+
 console.log(cars);
 console.log(rentals);
 console.log(actors);
